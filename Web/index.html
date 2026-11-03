@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css?v=5">
+    <script src="js/config.js" defer></script>
+    <script src="js/layout.js" defer></script>
+    <script src="https://code.highcharts.com/highcharts.js"> </script>
+    <script src="js/dashboard.js" defer></script>
+</head>
+<body>
+    <div id="Header"></div>
+
+    <main class="page">
+        <div class="page-header">
+            <div>
+                <h2 class="page-title">Dashboard</h2>
+                <p class="page-subtitle">Overview of IT assets</p>
+            </div>
+        </div>
+
+        <p id="dashboardError" class="form-error" hidden></p>
+
+        <div class="stats">
+            <div class="card stat">
+                <span class="stat-label">Total Assets</span>
+                <span id="statTotal" class="stat-value">-</span>
+            </div>
+            <div class="card stat">
+                <span class="stat-label">Brands</span>
+                <span id="statBrands" class="stat-value">-</span>
+            </div>
+            <div class="card stat">
+                <span class="stat-label">Warranty Expiring This Month</span>
+                <span id="statExpiring" class="stat-value stat-warning">-</span>
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="card chart-card">
+                <h3 class="card-title">Assets by Brand</h3>
+                <div id="brandChart" class="chart"></div>
+            </div>
+            <div class="card chart-card">
+                <h3 class="card-title">Assets by Status</h3>
+                <div id="statusChart" class="chart"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Warranty Expiring This Month</h3>
+            <div class="table-wrap">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Serial Number</th>
+                            <th>Brand</th>
+                            <th>Status</th>
+                            <th>Warranty Expires</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expiringBody">
+                        <tr><td colspan="4" class="table-empty">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer id="Footer"></footer>
+</body>
+</html>

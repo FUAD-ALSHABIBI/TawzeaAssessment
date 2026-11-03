@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Assets</title>
+    <link rel="stylesheet" href="css/style.css?v=4">
+    <script src="js/config.js" defer></script>
+    <script src="js/layout.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+    <script src="js/manage.js" defer></script>
+</head>
+
+<body>
+    <div id="Header"></div>
+
+    <main class="page">
+        <div class="page-header">
+            <div>
+                <h2 class="page-title">Manage Assets</h2>
+                <p class="page-subtitle"><span id="assetCount">0</span> assets in inventory</p>
+            </div>
+            <div class="page-actions">
+                <input id="searchInput" class="search-input" type="search" placeholder="Search assets...">
+                <button id="createBtn" class="btn btn-primary">+ Add Asset</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div id="myGrid" class="grid" style="height: 560px"></div>
+        </div>
+    </main>
+
+    <dialog id="viewDialog" class="modal">
+        <div class="modal-header">
+            <h2>Asset Details</h2>
+            <button class="modal-close" aria-label="Close">&times;</button>
+        </div>
+        <dl class="details">
+            <dt>Serial Number</dt><dd id="viewSerialNumber"></dd>
+            <dt>Brand</dt><dd id="viewBrand"></dd>
+            <dt>Status</dt><dd><span id="viewStatus" class="status-badge"></span></dd>
+            <dt>Warranty Expires</dt><dd id="viewWarranty"></dd>
+            <dt>Created</dt><dd id="viewCreated"></dd>
+            <dt>Asset ID</dt><dd id="viewId" class="muted"></dd>
+        </dl>
+        <div class="modal-footer">
+            <button class="btn btn-secondary modal-close">Close</button>
+        </div>
+    </dialog>
+
+    <dialog id="assetDialog" class="modal">
+        <form id="assetForm">
+            <div class="modal-header">
+                <h2 id="assetDialogTitle">Add Asset</h2>
+                <button type="button" class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="form-body">
+                <label class="form-field">
+                    <span>Serial Number</span>
+                    <input name="serialNumber" type="text" required>
+                </label>
+                <label class="form-field">
+                    <span>Brand</span>
+                    <input name="brand" type="text" required>
+                </label>
+                <label class="form-field">
+                    <span>Status</span>
+                    <select name="status">
+                        <option value="New">New</option>
+                        <option value="InUse">In Use</option>
+                        <option value="Damaged">Damaged</option>
+                        <option value="Disposed">Disposed</option>
+                    </select>
+                </label>
+                <label class="form-field">
+                    <span>Warranty Expiration Date</span>
+                    <input name="warrantyExpirationDate" type="date" required>
+                </label>
+                <p id="assetFormError" class="form-error" hidden></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </dialog>
+
+    <footer id="Footer"></footer>
+</body>
+
+</html>
